@@ -46,11 +46,14 @@ import { Login } from "@/api/interface";
 import { loginApi } from "@/api/modules/login";
 import type { FormInstance } from "element-plus";
 import md5 from "js-md5";
+import { GlobalStore } from "@/stores";
+import { useRouter } from "vue-router";
+import {HOME_URL} from "@/config/config"
 const loginFormRef = ref<FormInstance>();
-
+const globalStore = GlobalStore();
 const loading = ref(false);
 const loginForm = reactive<Login.ReqLoginForm>({ username: "", password: "" });
-
+const router = useRouter()
 const loginRules = reactive({
   username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
   password: [{ required: true, message: "请输入密码", trigger: "blur" }],
@@ -58,16 +61,19 @@ const loginRules = reactive({
 
 const login = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
-  formEl.validate(async valid => {
+  formEl.validate(async (valid) => {
     if (!valid) return;
     loading.value = true;
-    
     try {
       // 1.执行登录接口
-
+      const { data } = await loginApi({
+        ...loginForm,
+        password: md5(loginForm.password),
+      });
+      globalStore.setToken(data.access_token);
+      // 4.跳转到首页
+			router.push(HOME_URL);
       
-      const { data } = await loginApi({...loginForm,password: md5(loginForm.password)});
-      // globalStore.setToken(data.access_token);
     } finally {
       loading.value = false;
     }

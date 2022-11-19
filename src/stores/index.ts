@@ -12,12 +12,17 @@ export const GlobalStore = defineStore({
       isDark: false,
       primary: DEFAULT_PRIMARY,
     },
+    token:""
   }),
   actions: {
     // setThemeConfig
     setThemeConfig(themeConfig: ThemeConfigProps) {
       this.themeConfig = themeConfig;
     },
+    // setToken
+		setToken(token: string) {
+			this.token = token;
+		},
   },
 });
 // piniaPersist(持久化)
