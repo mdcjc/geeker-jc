@@ -1,11 +1,11 @@
 <template>
-  <div>
-    home
-  </div>
+	<div class="home card">
+		<img class="home-bg" src="@/assets/images/welcome.png" alt="welcome" />
+	</div>
 </template>
 
-<script lang="ts" setup>
-import { ref, toRefs} from 'vue'
-</script>
-<style scoped>
+<script setup lang="ts" name="home"></script>
+
+<style scoped lang="scss">
+@import "./index.scss";
 </style>

@@ -1,0 +1,29 @@
+.layout {
+    .menu {
+      &-headr {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        img {
+          width: 28px;
+          height: 28px;
+        }
+        div {
+          font-size: 21.5px;
+          font-weight: bold;
+          color: #dadada;
+          white-space: nowrap;
+        }
+      }
+    }
+    &-header {
+      background: #ffffff;
+    }
+  }
+  .el-container {
+    height: 100%;
+    .el-aside {
+      background-color: #191a20;
+    }
+  }

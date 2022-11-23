@@ -1,0 +1,2 @@
+- config 全局不动配置项 只做导出不做修改
+- piniaPersist pinia持久化封装

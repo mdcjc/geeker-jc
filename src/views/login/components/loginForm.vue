@@ -49,6 +49,8 @@ import md5 from "js-md5";
 import { GlobalStore } from "@/stores";
 import { useRouter } from "vue-router";
 import {HOME_URL} from "@/config/config"
+import { initDynamicRouter } from "@/routers/modules/dynamicRouter";
+
 const loginFormRef = ref<FormInstance>();
 const globalStore = GlobalStore();
 const loading = ref(false);
@@ -71,6 +73,9 @@ const login = (formEl: FormInstance | undefined) => {
         password: md5(loginForm.password),
       });
       globalStore.setToken(data.access_token);
+
+      // 2.添加动态路由
+			await initDynamicRouter();
       // 4.跳转到首页
 			router.push(HOME_URL);
       
