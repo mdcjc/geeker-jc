@@ -7,6 +7,8 @@ import {getDarkColor,getLightColor} from "@/utils/theme/tool"
  * @description 切换主题
  * */
 export const useTheme = () => {
+  console.log("123");
+  
   const globalStore = GlobalStore();
   const themeConfig = computed(() => globalStore.themeConfig);
   // 切换暗黑模式

@@ -35,14 +35,13 @@ const router = createRouter({
  * @description 路由拦截 beforeEach
  * */
 router.beforeEach(async (to, from, next) => {
-	
 	// 2.在跳转路由之前，清除所有的请求
 	// axiosCanceler.removeAllPending();
 
 	// 3.如果是访问登陆页，直接放行
 	if (to.path === LOGIN_URL) return next();
 
-	// 4.判断是否有 Token，没有重定向到 login
+	// // 4.判断是否有 Token，没有重定向到 login
 	const globalStore = GlobalStore();
 	if (!globalStore.token) return next({ path: LOGIN_URL, replace: true });
 
@@ -60,7 +59,6 @@ router.beforeEach(async (to, from, next) => {
 /**
  * @description 路由跳转结束
  * */
-
 
 /**
  * @description 路由跳转错误

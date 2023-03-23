@@ -27,7 +27,7 @@ defineProps<{ menuList: Menu.MenuOptions[] }>();
 
 const router = useRouter();
 const handleClickMenu = (subItem: Menu.MenuOptions) => {
-    return;
+    // return;
 	if (subItem.meta.isLink) window.open(subItem.meta.isLink, "_blank");
 	router.push(subItem.path);
 };

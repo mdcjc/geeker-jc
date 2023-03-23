@@ -1,11 +1,12 @@
 <template>
-	<router-view></router-view>
+	<div>
+		<MapContainer />
+	</div>
 </template>
 
 <script lang="ts" setup>
 import { ref, toRefs } from "vue";
-import { useTheme } from "@/hooks/useTheme";
-// 使用主题
-useTheme();
+// MapContainer
+import MapContainer from "@/components/MapContainer/index.vue";
 </script>
 <style scoped></style>
